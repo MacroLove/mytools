@@ -1,0 +1,20 @@
+{
+  "name": "win-sed",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "index.js",
+  "scripts": {
+    "b": "pkg ."
+  },
+  "author": "macro zhao",
+  "license": "MIT",
+  "devDependencies": {
+    "pkg": "^5.5.1"
+
+  },
+  "pkg": {
+    "assets": "ssed.exe",
+    "targets": [ "win" ],
+    "outputPath": "dist"
+  }
+}
