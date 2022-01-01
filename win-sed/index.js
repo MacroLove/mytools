@@ -1,5 +1,4 @@
 const { execSync } = require('child_process');
-const path = require('path');
 
 var args = process.argv;
 args.shift();
@@ -16,6 +15,8 @@ if (!suffix) {
   suffix = 'bkp';
 }
 
+try {
+  
 var ret = execSync('dir /s /b /a:-D ' + args.pop());
 ret = ret.toString('utf8');
 var files = ret.split('\n');
@@ -39,4 +40,8 @@ for (var f of files) {
 }
 
 
+} catch (error) {
+  if (error.stderr) console.error(error.stderr.toString('utf-8'));
+  console.error('Command failed!');
+}
 
