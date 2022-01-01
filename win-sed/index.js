@@ -26,12 +26,12 @@ for (var f of files) {
   if (f.trim()) {
     var f2 = f.trim().replace(/\\/g, '/');
     try {
-      execSync(sed + ' ' + sedArgs + ' ' + f2);
+      execSync('chcp 65001; ' + sed + ' ' + sedArgs + ' ' + f2);
     } catch (error) {
       // pass
     }
     try {
-      execSync('del ' + f + suffix)
+      execSync('chcp 65001; del ' + f + suffix)
     } catch (error) {
       // pass
     }
