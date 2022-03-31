@@ -8,6 +8,12 @@ args.shift();
 
 var configFileNomarl = '.git/config';
 var configFileEnc = '.git/bconfig';
+var gitDirEnc = '.dot-git';
+
+// move .git
+if (FS.existsSync(gitDirEnc)) {
+  execSync('move .dot-git .git');
+}
 
 // dec
 try {
@@ -17,7 +23,7 @@ try {
     FS.writeFileSync(configFileNomarl, dec, {encoding: 'utf8'});
   }
   var ret = execSync('git ' + args.join(' '));
-  console.log(ret.toString());
+  console.log(ret.toString('utf8'));
 } catch (error) {
   if (error.stderr) console.error(error.stderr.toString());
 }
@@ -33,4 +39,10 @@ if (FS.existsSync(configFileNomarl)) {
 if (FS.existsSync(configFileNomarl)) {
   FS.rmSync(configFileNomarl, {force: true});
 }
+
+// move .git
+if (FS.existsSync('.git')) {
+  execSync('move .git .dot-git');
+}
+
 
