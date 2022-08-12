@@ -1,0 +1,5 @@
+opencv-python==4.5.5.64
+PyQt5
+Pillow
+numpy
+pynput
